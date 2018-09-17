@@ -364,6 +364,8 @@
     <Compile Include="Assets\Editor\FieldOfViewEditor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Shader\Stencil Mask.shader" />
+    <None Include="Assets\Shader\Stencil Object.shader" />
     <None Include="C:\ProgramData\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.2\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="C:\ProgramData\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.2\Editor\Resources\Styles\Main_Light.uss" />
     <None Include="C:\ProgramData\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.2\Editor\Resources\Templates\Alert.uxml" />
