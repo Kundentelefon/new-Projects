@@ -1,16 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
-public class FieldOfViewEditor : MonoBehaviour {
+//visualizes fov
+[CustomEditor(typeof(FieldOfView))]
+public class FieldOfViewEditor : Editor {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    //Draw handles 
+    private void OnSceneGUI()
+    {
+        //ref to fov script, custom editor of this script
+        FieldOfView fow = (FieldOfView) target;
+        //give radius
+        Handles.color = Color.white;
+        //center of fov object, direction of the angle to rotate, from what angle will start, all away degreem actual radius 
+        Handles.DrawWireArc(fow.transform.position, Vector3.up, Vector3.forward, 360, fow.viewRadius);
+        Vector3 viewAngleA = fow.DirFromAngle(-fow.viewAngle / 2, false);
+        Vector3 viewAngleB = fow.DirFromAngle(fow.viewAngle / 2, false);
+        Handles.DrawLine(fow.transform.position, fow.transform.position + viewAngleA * fow.viewRadius);
+        Handles.DrawLine(fow.transform.position, fow.transform.position + viewAngleB * fow.viewRadius);
+
+        Handles.color = Color.red;
+        //draw line to every visible Target
+        foreach(Transform visibleTarget in fow.visibleTargets)
+        {
+            Handles.DrawLine(fow.transform.position, visibleTarget.position);
+        }
+
+    }
 }
